@@ -1,10 +1,19 @@
-<h1 class="text-center">Lists index</h1>
-<div class="container">
-<ul class="list-group">
-  <% @lists.each do |list| %>
-    <li class="list-group-item"><i class="fa-solid fa-film"></i> <%= link_to list.name, list_path(list), class: "text-decoration-none text-dark" %></li>
-  <% end %>
-</ul>
-<p class="mt-3"><%= link_to "Add a list", new_list_path, class: "text-decoration-none text-dark" %></li>
-</p>
+<div class="jumbotron jumbotron-fluid" id="banner">
+  <div class="container">
+    <h1 class="display-4">Lists index</h1>
+  </div>
+</div>
+
+<div class="container d-flex flex-wrap justify-content-center mt-5">
+<% @lists.each do |list| %>
+<div class="card m-3" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to list.name, list_path(list), class: "text-decoration-none text-dark" %></h5>
+    <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <i class="fa-solid fa-trash text-secondary small"></i>
+    <% end %>
+  </div>
+</div>
+<% end %>
 </div>
